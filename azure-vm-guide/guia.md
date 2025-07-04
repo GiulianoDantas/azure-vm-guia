@@ -480,10 +480,14 @@ Segue um modelo resumido com as funcionalidades requisitadas.
 ### Imagens de Referência
 
 - **Criação de VM no Portal Azure:**
-  - ![Criação de VM no Portal Azure 1](images/vm_creation_portal_1.png)
+  - ![Criação de VM no Portal Azure 1](images/vm_rg.png)
 - **Configuração de VM no Portal Azure:**
-  - ![Configuração de VM no Portal Azure 1](images/vm_configuration_portal_1.png)
-- **Resultados de Deploy de VM no Azure:**
-  - ![Resultados de Deploy de VM no Azure 1](images/vm_deployment_results_1.png)
+  - ![Configuração de VM no Portal Azure 1](images/vm_vnet1.png)
+- **Configuração de VM no Portal Azure:**
+  - ![Resultados de Deploy de VM no Azure 1](images/vm_vnet2.png)
+- **Configuração de VM no Portal Azure:**
+  - ![Configuração de VM no Portal Azure 1](images/vm-vm1.png)
+- **Configuração de VM no Portal Azure:**
+  - ![Configuração de VM no Portal Azure 1](images/vm-vm2.png)
 
 
