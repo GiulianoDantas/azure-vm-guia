@@ -15,7 +15,7 @@ Elas são parte do modelo IaaS (Infrastructure as a Service), em que a Microsoft
 
 ####  Principais termos e seus significados
 
-** SKU / Size**
+### SKU / Size**
 
 Define a potência da VM. Inclui:
 
@@ -31,14 +31,14 @@ Exemplo prático:
 - E-Series → otimizadas para memória, ideais para bancos de dados ou analytics.
 - F-Series → alto processamento com menor memória (compute optimized).
 
-** Imagem (Image)**
+### Imagem (Image)
 
 É o sistema operacional + versão que será instalado na VM. Pode ser:
 
 - Imagens do Marketplace (Windows Server, Ubuntu, Red Hat, etc).
 - Imagens personalizadas que você cria com configurações pré-definidas para padronizar deploys.
 
-** Discos Gerenciados**
+## Discos Gerenciados
 
 São discos virtuais gerenciados pelo Azure para alta disponibilidade, criptografia automática e resiliência. Tipos comuns:
 
@@ -46,11 +46,11 @@ São discos virtuais gerenciados pelo Azure para alta disponibilidade, criptogra
 - Standard SSD → melhor custo-benefício para cargas moderadas.
 - Standard HDD → menor custo, performance básica (evite para produção).
 
-** NIC (Network Interface Card)**
+## NIC (Network Interface Card)
 
 Interface de rede virtual que conecta a VM à sua VNet (rede virtual do Azure). Cada VM precisa de pelo menos uma NIC para se comunicar.
 
-** NSG (Network Security Group)**
+## NSG (Network Security Group)
 
 Funciona como um firewall que controla tráfego de entrada e saída com regras baseadas em:
 
@@ -91,26 +91,26 @@ Funciona como um firewall que controla tráfego de entrada e saída com regras b
 
 ####  Gerenciamento de VM após criação
 
-** Start / Stop / Restart**
+## Start / Stop / Restart
 
 - Start: liga a VM.
 - Stop: desliga a VM, mas continua cobrando o disco e IP público.
 - Stop (deallocated): desliga e libera recursos de computação (não cobra CPU/RAM, apenas armazenamento).
 
-** Auto-shutdown**
+## Auto-shutdown
 
 Configura desligamento automático em horários pré-definidos (ex: 19:00). Excelente para laboratórios ou ambientes de desenvolvimento, reduzindo custos.
 
-** Monitoramento**
+## Monitoramento
 
 - Azure Monitor → métricas como CPU, disco, memória.
 - Log Analytics → logs detalhados, diagnóstico avançado e queries KQL para insights.
 
-** Backups**
+## Backups
 
 - Configure Recovery Services Vault para snapshots programados e recuperação de desastres. Essencial em produção.
 
-** Extensions**
+## Extensions
 
 São pacotes que adicionam funcionalidades na VM, como:
 
@@ -120,22 +120,22 @@ São pacotes que adicionam funcionalidades na VM, como:
 
 ###  3. Anotações importantes (com exemplos práticos)
 
-** Scale Sets**
+## Scale Sets
 
 Cria múltiplas instâncias idênticas de uma VM, permitindo escalar automaticamente com base na demanda (ex: aumento de usuários em um sistema web).
 
-** Availability Sets e Availability Zones**
+## Availability Sets e Availability Zones
 
 - Availability Sets: garante que VMs fiquem em racks físicos diferentes no mesmo datacenter → reduz impacto de falhas de hardware.
 - Availability Zones: distribui VMs em diferentes zonas físicas dentro da região → alta disponibilidade contra falhas de datacenter inteiro.
 
-** Naming Convention recomendada**
+## Naming Convention recomendada
 
 Seguir padrão para organização e automação:
 `vm-[funcao]-[ambiente]-[regiao]-[sequencia]`
 Ex: `vm-app-prd-brazil-01`
 
-** Tags**
+## Tags
 
 Adicione tags para:
 
@@ -143,29 +143,29 @@ Adicione tags para:
 - Environment: dev, test, prod.
 - CostCenter: centro de custo ou projeto.
 
-** Snapshots vs Backup**
+## Snapshots vs Backup
 
 - Snapshot: cria cópia do disco em ponto no tempo (rápido para labs ou dev).
 - Backup: solução completa, inclui agendamento, retenção e restauração integrada (essencial em produção).
 
 ###  4. Dicas práticas para otimização
 
-** Reduza custos**
+## Reduza custos
 
 - Desligue VMs quando não usadas (Stop-Deallocate).
 - Use Reserved Instances para workloads previsíveis, economizando até 72%.
 
-** Segurança**
+## Segurança
 
 - Evite IP público direto em produção; utilize Azure Bastion ou jumpbox.
 - Configure Just-in-Time VM Access no Defender for Cloud para expor portas apenas quando necessário.
 
-** Automatização**
+## Automatização
 
 - Use ARM Templates, Bicep ou Terraform para padronizar deploys e reduzir erros manuais.
 - Scripts CLI ajudam em deploys rápidos de laboratórios e provas.
 
-** Governança**
+## Governança
 
 - Crie Azure Policies para restringir:
     - Tipos e tamanhos de VM permitidos.
