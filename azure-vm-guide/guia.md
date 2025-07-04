@@ -184,15 +184,15 @@ Segue a implementação completa da tarefa em PowerShell, Azure CLI e ARM Templa
 
 ###  Cenário
 
-✅ VM: Windows Server 2022
-✅ Resource Group: rg-dev-vm
-✅ Região: Brazil South
-✅ Nome da VM: vm-dev-01
-✅ Tamanho: Standard_B2ms
-✅ VNet: vnet-dev (10.1.0.0/16)
-✅ Subnet: subnet-dev (10.1.1.0/24)
-✅ IP Público: Dinâmico
-✅ NSG: Permitir RDP (3389) apenas do seu IP público
+✅ VM: Windows Server 2022 ;
+✅ Resource Group: rg-dev-vm ;
+✅ Região: Brazil South ;
+✅ Nome da VM: vm-dev-01 ;
+✅ Tamanho: Standard_B2ms ;
+✅ VNet: vnet-dev (10.1.0.0/16) ;
+✅ Subnet: subnet-dev (10.1.1.0/24) ;
+✅ IP Público: Dinâmico ;
+✅ NSG: Permitir RDP (3389) apenas do seu IP público.
 
 
 
