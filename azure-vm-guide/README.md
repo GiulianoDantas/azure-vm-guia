@@ -1,6 +1,6 @@
 # Guia de Máquinas Virtuais Azure
 
-Este repositório contém um guia completo e didático sobre Máquinas Virtuais (VMs) no Microsoft Azure, abrangendo desde conceitos fundamentais até a implementação prática e otimização de custos e segurança.
+Este repositório contém um guia sobre Máquinas Virtuais (VMs) no Microsoft Azure, abrangendo desde conceitos fundamentais até a implementação prática e otimização de custos e segurança.
 
 ## Estrutura do Repositório
 
