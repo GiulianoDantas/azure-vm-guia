@@ -1,0 +1,140 @@
+
+{
+"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+"contentVersion": "1.0.0.0",
+"parameters": {
+"adminUsername": {
+"type": "string",
+"defaultValue": "azureuser"
+},
+"adminPassword": {
+"type": "securestring"
+},
+"myIP": {
+"type": "string",
+"metadata": {
+"description": "Seu IP público para liberar RDP"
+}
+}
+},
+"resources": [
+{
+"type": "Microsoft.Network/virtualNetworks",
+"apiVersion": "2022-09-01",
+"name": "vnet-dev",
+"location": "brazilsouth",
+"properties": {
+"addressSpace": {
+"addressPrefixes": ["10.1.0.0/16"]
+},
+"subnets": [
+{
+"name": "subnet-dev",
+"properties": {
+"addressPrefix": "10.1.1.0/24"
+}
+}
+]
+}
+},
+{
+"type": "Microsoft.Network/networkSecurityGroups",
+"apiVersion": "2022-09-01",
+"name": "vm-dev-01-nsg",
+"location": "brazilsouth",
+"properties": {
+"securityRules": [
+{
+"name": "Allow-RDP-MyIP",
+"properties": {
+"protocol": "Tcp",
+"sourcePortRange": "*",
+"destinationPortRange": "3389",
+"sourceAddressPrefix": "[parameters(\'myIP\')]",
+"destinationAddressPrefix": "*",
+"access": "Allow",
+"priority": 1000,
+"direction": "Inbound"
+}
+}
+]
+}
+},
+{
+"type": "Microsoft.Network/publicIPAddresses",
+"apiVersion": "2022-09-01",
+"name": "vm-dev-01-pip",
+"location": "brazilsouth",
+"properties": {
+"publicIPAllocationMethod": "Dynamic"
+}
+},
+{
+"type": "Microsoft.Network/networkInterfaces",
+"apiVersion": "2022-09-01",
+"name": "vm-dev-01-nic",
+"location": "brazilsouth",
+"dependsOn": [
+"vnet-dev",
+"vm-dev-01-pip",
+"vm-dev-01-nsg"
+],
+"properties": {
+"ipConfigurations": [
+{
+"name": "ipconfig1",
+"properties": {
+"subnet": {
+"id": "[resourceId(\'Microsoft.Network/virtualNetworks/subnets\',\'vnet-dev\',\'subnet-dev\')]"
+},
+"privateIPAllocationMethod": "Dynamic",
+"publicIPAddress": {
+"id": "[resourceId(\'Microsoft.Network/publicIPAddresses\',\'vm-dev-01-pip\')]"
+}
+}
+}
+],
+"networkSecurityGroup": {
+"id": "[resourceId(\'Microsoft.Network/networkSecurityGroups\',\'vm-dev-01-nsg\')]"
+}
+}
+},
+{
+"type": "Microsoft.Compute/virtualMachines",
+"apiVersion": "2022-11-01",
+"name": "vm-dev-01",
+"location": "brazilsouth",
+"dependsOn": ["vm-dev-01-nic"],
+"properties": {
+"hardwareProfile": {
+"vmSize": "Standard_B2ms"
+},
+"storageProfile": {
+"imageReference": {
+"publisher": "MicrosoftWindowsServer",
+"offer": "WindowsServer",
+"sku": "2022-Datacenter",
+"version": "latest"
+},
+"osDisk": {
+"createOption": "FromImage"
+}
+},
+"osProfile": {
+"computerName": "vm-dev-01",
+"adminUsername": "[parameters(\'adminUsername\')]",
+"adminPassword": "[parameters(\'adminPassword\')]"
+},
+"networkProfile": {
+"networkInterfaces": [
+{
+"id": "[resourceId(\'Microsoft.Network/networkInterfaces\',\'vm-dev-01-nic\')]"
+}
+]
+}
+}
+}
+]
+}
+
+
