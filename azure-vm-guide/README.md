@@ -13,7 +13,7 @@ Este repositório contém um guia sobre Máquinas Virtuais (VMs) no Microsoft Az
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone https://github.com/SEU_USUARIO/azure-vm-guide.git
+    git clone https://github.com/GiulianoDantas/azure-vm-guia.git
     ```
 2.  **Navegue até o Diretório:**
     ```bash
